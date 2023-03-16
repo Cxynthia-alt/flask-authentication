@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Add User{% endblock %}
+{% block content %}
+
+<h3>New Pet</h3>
+<div class="row justify-content">
+  <div class="col-md-8">
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {% for field in form if field.widget.input_type != 'hidden' %}
+      <div class="form-group">
+        {{field.label}}
+        {{field}}
+
+        {% for err in field.errors %}
+        <small class="form-text text-muted">{{err}}</small>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
